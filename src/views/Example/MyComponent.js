@@ -1,44 +1,36 @@
 import React from 'react';
 import ChildComponent from './ChildComponent';
+import AddComponent from './AddComponent';
 
 class MyComponent extends React.Component {
     state = {
-        firstName: '',
-        lastName: '',
         arrayJob: [
-            {id: 'abcjob1', nameJob: 'Developer', salary: '1000'},
-            {id: 'abcjob2', nameJob: 'Tester', salary: '500'},
-            {id: 'abcjob3', nameJob: 'Project Manager', salary: '2000'}
+            {id: 'abcjob1', title: 'Developer', salary: '1000'},
+            {id: 'abcjob2', title: 'Tester', salary: '500'},
+            {id: 'abcjob3', title: 'Project Manager', salary: '2000'}
         ]
     }
 
-    handleOnChangeFirstName = (event) => {
+    addJob = (newJob) => {
         this.setState({
-            firstName: event.target.value
+            arrayJob: [...this.state.arrayJob, newJob]
         })
     }
 
-    handleOnChangeLastName = (event) => {
+    deleteJob = job => {
+        let newJob = this.state.arrayJob.filter(item => item.id != job.id);
         this.setState({
-            lastName: event.target.value
+            arrayJob: newJob
         })
     }
 
     render() {
         return (
             <>
-                <form>
-                    <label htmlFor="fname">First name:</label><br />
-                    <input type="text" value= {this.state.firstName} onChange={event => this.handleOnChangeFirstName(event)}/><br />
-                    <label htmlFor="lname">Last name:</label><br />
-                    <input type="text"  value= {this.state.lastName} onChange={event => this.handleOnChangeLastName(event)} /><br /><br />
-                    <input type="submit" value="Submit" />
-                </form>
+                <AddComponent addJob={this.addJob} />
                 <ChildComponent 
-                    name={this.state.firstName} 
-                    age={"20"}
-                    address={"Ha Noi"}
                     arrayJob = {this.state.arrayJob}
+                    deleteJob = {this.deleteJob}
                 />
             </>
         )
