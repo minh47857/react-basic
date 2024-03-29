@@ -26,10 +26,17 @@ const InputOTP = (props) => {
             <div className='timer'>
                 <CountDown
                     setIsDisableBtn={props.setIsDisableBtn}
+                    radius={100}
+                    strokeBgColor={"gray"}
+                    strokeColor={"green"}
+                    strokeWidth={10}
+                    seconds={props.seconds}
+                    isPlaying={props.isPlaying}
+                    count={props.count}
+                    setCount={props.setCount}
                 />
             </div>
             <div className='action'>
-                <button className='clear'>Clear</button>
                 <button disabled={props.isDisableBtn} className='confirm' onClick={handleConfirmOTP}>Confirm</button>
             </div>
         </div>

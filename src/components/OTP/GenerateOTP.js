@@ -7,6 +7,9 @@ const GenerateOTP = (props) => {
         const otp = Math.floor(100000 + Math.random() * 900000);
         setOrgOTP(otp);
         props.setOrgOTPParent(otp);
+        props.setIsPlaying(true);
+        props.setCount(props.seconds * 1000);
+        props.setIsDisableBtn(true);
     }
 
     return(

@@ -1,0 +1,15 @@
+.countdown-container {  
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    transform: rotateY(-180deg) rotateZ(-90deg)
+  }
+}
